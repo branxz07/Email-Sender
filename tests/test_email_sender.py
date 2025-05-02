@@ -2,10 +2,16 @@ import os
 import sys
 from unittest.mock import patch, MagicMock
 
-# Add src to path before any other imports
-sys.path.insert(0, 
-                os.path.abspath(os.path.join(os.path.dirname(__file__), '../src'))
-               )
+# Add src to path before any other imports to allow import of email_sender module
+sys.path.insert(
+    0,
+    os.path.abspath(
+        os.path.join(
+            os.path.dirname(__file__),
+            '../src'
+        )
+    )
+)
 
 from email_sender import send_email
 

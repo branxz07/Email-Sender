@@ -32,13 +32,17 @@ email_message['To'] = receiver_email
 email_message['Subject'] = subject
 email_message.set_content(body)
 
-# SSL context
-context = ssl.create_default_context()
-
 # Send email once (example)
-with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+with smtplib.SMTP_SSL(
+    'smtp.gmail.com',
+    465
+) as smtp:
     smtp.login(sender_email, sender_password)
-    smtp.sendmail(sender_email, receiver_email, email_message.as_string())
+    smtp.sendmail(
+        sender_email,
+        receiver_email,
+        email_message.as_string()
+    )
 
 
 # Function to send an email with parameters (for testing/reuse)
