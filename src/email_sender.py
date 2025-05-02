@@ -61,17 +61,22 @@ def send_email(subject, body, recipient, sender, password, smtp_server, smtp_por
     :type smtp_port: int
     :return: None
     """
-    msg = EmailMessage()
-    msg.set_content(body)
-    msg['Subject'] = subject
-    msg['To'] = recipient
-    msg['From'] = sender
-    
-    # Secure connection context
-    context = ssl.create_default_context()
-    
-    # Sending email
-    with smtplib.SMTP(smtp_server, smtp_port) as smtp:
-        smtp.starttls(context=context)
-        smtp.login(sender, password)
-        smtp.send_message(msg)
+    try:
+        msg = EmailMessage()
+        msg.set_content(body)
+        msg['Subject'] = subject
+        msg['To'] = recipient
+        msg['From'] = sender
+        
+        # Secure connection context
+        context = ssl.create_default_context()
+        
+        # Sending email
+        with smtplib.SMTP_SSL(smtp_server, smtp_port) as server:
+                server.login(sender, password)
+                server.send_message(msg)
+            return True
+    except Exception as e:
+        print(f"Error sending email: {e}")
+        return False
+        
