@@ -35,6 +35,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Autoformat with Black
+        run: |
+          pip install black
+          black src/ tests/
+
       - name: Install flake8 (for linting)
         run: |
           pip install flake8
