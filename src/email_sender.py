@@ -59,7 +59,8 @@ def send_email(subject, body, recipient, sender, password, smtp_server, smtp_por
         msg['To'] = recipient
         msg['From'] = sender
 
-        context = ssl.create_default_context()
+        # Removed unused context variable
+        # context = ssl.create_default_context()
 
         with smtplib.SMTP_SSL(
             smtp_server,
