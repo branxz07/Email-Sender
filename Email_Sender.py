@@ -2,6 +2,7 @@ import os
 from email.message import EmailMessage
 import ssl
 import smtplib
+from dotenv import load_dotenv
 
 # Example Documentation Format:
 """[Summary]
