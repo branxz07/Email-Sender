@@ -3,7 +3,7 @@ import pytest
 from unittest.mock import patch, MagicMock
 import sys
 
-# Modify sys.path to include the src directory for module imports
+# Add the src directory to sys.path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 
 from email_sender import send_email
@@ -12,8 +12,8 @@ def test_send_email_success(monkeypatch):
     monkeypatch.setenv("EMAIL_ADDRESS", "testsender@example.com")
     monkeypatch.setenv("EMAIL_PASSWORD", "fakepassword")
 
-    # Mock SMTP object
-    with patch("smtplib.SMTP") as mock_smtp:
+    # Patch the correct SMTP class used in the function
+    with patch("smtplib.SMTP_SSL") as mock_smtp:
         mock_instance = MagicMock()
         mock_smtp.return_value.__enter__.return_value = mock_instance
 
@@ -21,10 +21,10 @@ def test_send_email_success(monkeypatch):
             subject="Test Subject",
             body="This is a test email.",
             recipient="receiver@example.com",
-            sender="testsender@example.com",  # Used mock sender email
-            password="fakepassword",  # Used mock password
+            sender="testsender@example.com",
+            password="fakepassword",
             smtp_server="smtp.gmail.com",
-            smtp_port=465
+            smtp_port=465,
         )
 
         assert result is True
