@@ -60,4 +60,8 @@ jobs:
         run: |
           cd tests
           pytest --maxfail=1 --disable-warnings -q
-
+          
+      - name: Mock Deployment
+        if: success()
+        run: |
+          echo "🚀 Deploying app to staging environment..."
