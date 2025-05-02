@@ -45,6 +45,8 @@ jobs:
           pip install pytest-cov
           pytest --cov=Email_Sender test_email_sender.py
 
-      - name: Run tests
+      - name: Run tests with pytest
         run: |
-          pytest test_email_sender.py
+          cd tests
+          pytest --maxfail=1 --disable-warnings -q
+
