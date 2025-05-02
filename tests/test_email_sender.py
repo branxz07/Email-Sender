@@ -1,12 +1,14 @@
 import os
-import pytest
-from unittest.mock import patch, MagicMock
 import sys
+from unittest.mock import patch, MagicMock
 
-# Add the src directory to sys.path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+# Add src to path before any other imports
+sys.path.insert(0, 
+                os.path.abspath(os.path.join(os.path.dirname(__file__), '../src'))
+               )
 
 from email_sender import send_email
+
 
 def test_send_email_success(monkeypatch):
     monkeypatch.setenv("EMAIL_ADDRESS", "testsender@example.com")
