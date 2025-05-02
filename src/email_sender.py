@@ -57,11 +57,17 @@ def send_email(subject, body, recipient, sender, password, smtp_server, smtp_por
 
         context = ssl.create_default_context()
 
-        with smtplib.SMTP_SSL(smtp_server, smtp_port, context=context) as server:
+        with smtplib.SMTP_SSL(
+            smtp_server,
+            smtp_port
+        ) as server:
+
             server.login(sender, password)
             server.send_message(msg)
 
         return True
     except Exception as e:
-        print(f"Error sending email: {e}")
+        print(
+            f"Error sending email: {e}"
+        )
         return False
