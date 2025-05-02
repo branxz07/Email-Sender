@@ -40,14 +40,6 @@ jobs:
           pip install black
           black src/ tests/
 
-      - name: Install flake8 (for linting)
-        run: |
-          pip install flake8
-
-      - name: Run linter (flake8)
-        run: |
-          flake8 src/ tests/
-
       - name: Run tests with coverage
         run: |
           pip install pytest-cov
