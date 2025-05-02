@@ -15,6 +15,7 @@ This Python script sends emails using SMTP with SSL security. It allows for send
 - Python 3.x
 - `smtplib` library (built-in)
 - `ssl` library (built-in)
+- `python-dotenv` (for environment variables)
 
 ## Installation
 
@@ -26,14 +27,15 @@ This Python script sends emails using SMTP with SSL security. It allows for send
 2. **Set up email credentials securely:**
     - Store your email credentials in environment variables to enhance security.
     ```sh
-    export EMAIL_SENDER='youremail@gmail.com'
+    export EMAIL_ADDRESS='youremail@gmail.com'
     export EMAIL_PASSWORD='your-secure-app-password'
     ```
+    
 
 ## Usage
 
 1. **Modify sender and receiver details:**
-    - Update `sender_email` and `receiver_email` in the script.
+    - Update `sdr_email` (sender email) and `receiver_email` in the script.
 2. **Run the script:**
     ```sh
     python email_sender.py
@@ -44,7 +46,7 @@ This Python script sends emails using SMTP with SSL security. It allows for send
         subject="Your Subject",
         body="Your message here",
         recipient="receiver@example.com",
-        sender=os.getenv("EMAIL_SENDER"),
+        sdr=os.getenv("EMAIL_SENDER"),
         password=os.getenv("EMAIL_PASSWORD"),
         smtp_server='smtp.gmail.com',
         smtp_port=587
