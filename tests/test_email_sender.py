@@ -2,9 +2,10 @@ import os
 import pytest
 from Email_Sender import send_email
 from unittest.mock import patch, MagicMock
+import sys
 
+# Modify sys.path to include the src directory for module imports
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
-
 
 def test_send_email_success(monkeypatch):
     monkeypatch.setenv("EMAIL_ADDRESS", "testsender@example.com")
@@ -18,7 +19,11 @@ def test_send_email_success(monkeypatch):
         result = send_email(
             subject="Test Subject",
             body="This is a test email.",
-            recipient="receiver@example.com"
+            recipient="receiver@example.com",
+            sender="testsender@example.com",  # Used mock sender email
+            password="fakepassword",  # Used mock password
+            smtp_server="smtp.gmail.com",
+            smtp_port=465
         )
 
         assert result is True

@@ -4,22 +4,13 @@ import ssl
 import smtplib
 from dotenv import load_dotenv
 
-# Example Documentation Format:
-"""[Summary]
-
-:param [ParamName]: [ParamDescription], defaults to [DefaultParamVal]
-:type [ParamName]: [ParamType](, optional)
-...
-:raises [ErrorType]: [ErrorDescription]
-...
-:return: [ReturnDescription]
-:rtype: [ReturnType]
-"""
+# Load environment variables from .env file (if exists)
+load_dotenv()
 
 # Sender information
 sender_name = "Debt Collector"
-sender = os.environ.get("EMAIL_ADDRESS")
-password = os.environ.get("EMAIL_PASSWORD")
+sender_email = os.environ.get("EMAIL_ADDRESS")  # Corrected variable name
+sender_password = os.environ.get("EMAIL_PASSWORD")  # Corrected variable name
 receiver_email = 'anotheremail@gmail.com'  # Receiver email
 
 # Email content
