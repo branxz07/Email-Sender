@@ -2,9 +2,15 @@ name: CI for Email Sender
 
 on:
   push:
-    branches: [main]
+    paths:
+      - 'src/**'      
+      - 'tests/**'     
+      - 'requirements.txt'
   pull_request:
-    branches: [main]
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'requirements.txt'
 
 jobs:
   build:
