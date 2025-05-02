@@ -42,6 +42,13 @@ jobs:
         run: |
           pip install black
           black src/ tests/
+      - name: Install flake8
+        run: |
+          pip install flake8
+
+      - name: Run flake8
+        run: |
+          flake8 src/ tests/
 
       - name: Run tests with coverage
         run: |
