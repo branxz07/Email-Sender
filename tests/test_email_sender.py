@@ -1,6 +1,6 @@
 import os
 import pytest
-from Email_Sender import send_email
+from email_sender import send_email
 from unittest.mock import patch, MagicMock
 import sys
 
