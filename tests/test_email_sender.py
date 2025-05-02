@@ -1,7 +1,10 @@
 import os
 import pytest
-from email_sender import send_email
+from Email_Sender import send_email
 from unittest.mock import patch, MagicMock
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+
 
 def test_send_email_success(monkeypatch):
     monkeypatch.setenv("EMAIL_ADDRESS", "testsender@example.com")
