@@ -11,7 +11,7 @@ sys.path.insert(
             '../src'
         )
     )
-)  # noqa: E402
+)
 
 from email_sender import send_email
 
