@@ -17,8 +17,8 @@ import smtplib
 
 # Sender information
 sender_name = "Debt Collector"
-sender_email = 'youremail@gmail.com'  # Replace with your actual email
-sender_password = "xxxx xxxx xxxx xxxx"  # Use environment variable for security
+sender = os.environ.get("EMAIL_ADDRESS")
+password = os.environ.get("EMAIL_PASSWORD")
 receiver_email = 'anotheremail@gmail.com'  # Receiver email
 
 # Email content
